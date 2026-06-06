@@ -57,6 +57,30 @@ A successful connection returns:
 {"status": "ok", "database": "connected"}
 ```
 
+## Authentication
+
+Log in with an email address or username:
+
+```http
+POST /api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "Password@123"
+}
+```
+
+Send the returned access token to protected endpoints:
+
+```http
+GET /api/v1/auth/me
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+The access token expires after the number of minutes configured by
+`FASTAPI_ACCESS_TOKEN_EXPIRE_MINUTES`.
+
 Run tests:
 
 ```powershell
